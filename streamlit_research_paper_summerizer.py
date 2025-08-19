@@ -2,8 +2,16 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_core.prompts import PromptTemplate, load_prompt
+from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
+
+messages = [
+    HumanMessage("Hi"),
+    SystemMessage("YOu're an assistant")
+]
+
+print(messages)
 
 llm = HuggingFaceEndpoint(repo_id="openai/gpt-oss-20b", task="text-generation")
 
@@ -34,5 +42,9 @@ if st.button("Summarize"):
     })
      
     st.write(result.content)
+
+
+
+
 
 
